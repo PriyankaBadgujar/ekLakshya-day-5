@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            font-size: 25px;
+
+        }
+        div{
+            
+            text-align: center;
+            font-size: 10px;
+            flex: unset;
+            padding: 0px 400px ;
+
+        }
+    </style>
+
+    <script>
+        function validation(){
+            name= document.myform.name.value;
+            email= document.myform.email.value;
+            pass= document.myform.pass.value;
+           
+            phone=document.myform.phone.value;
+            gender= document.myform.gender.value;
+           
+            usernames=['Priyanka','Raam','Sima','Rina','swati'];
+            var lowerCaseLetters = /[a-z]/g;
+            var upperCaseLetters = /[A-Z]/g;
+            var numbers = /[0-9]/g;
+            var special=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+            function Name(name){
+                if (name==''){
+                    alert('enter a name');
+                    document.myform.name.focus();
+                    return false;
+                    
+                }
+               else if (name.length<3 ){
+                    alert('enter a name with length greater than 3');
+                    document.myform.name.focus();
+                    return false;
+                }
+                 else if (name.length> 15){
+                    alert('enter a name with length less than 15');
+                    document.myform.name.focus();
+                    return false;
+                }
+                else if (!validateUser(name)){
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+            flag=0;
+        function validateUser(name){
+            usernames=['Priyanka','Raam','Sima','Rina','swati'];
+        for(key in usernames){
+        if (name==usernames[key]){
+            flag=1;}}
+            if (flag==1){
+           alert('name already exist');
+           return false;
+            
+                   }
+                   else{
+        return true;
+        
+    }
+        
+        }
+            function Email(email){
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(myform.email.value))
+  {
+    return (true)
+  }
+    alert("You have entered an invalid format of  email address!")
+    return (false)
+            }
+            function Phone(phone){
+                if (phone==''){
+                    alert('enter a phone number');
+                    document.myform.phone.focus();
+                    return false;
+                    
+                }
+                else if((isNaN(phone))){
+                    alert('enter only digits in phone number')
+                    return false;
+                }
+                else if(phone.length!=10){
+                    alert('enter  10 digits in phone number')
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+            function Pass(pass)
+            {
+                if (pass==''){
+                    alert('enter a password');
+                    document.myform.pass.focus();
+                    return false;
+                    
+                }
+                else  if(!(pass.match(lowerCaseLetters))) {
+                    alert('enter atleast 1 lowercase in password')
+                    return false;
+                }
+                else  if(!(pass.match(upperCaseLetters))) {
+                    alert('enter atleast 1 uppercase in password')
+                    return false;
+                }
+                else  if(!(pass.match(numbers))) {
+                    alert('enter atleast 1 number in password')
+                    return false;
+                }
+                else  if(!(pass.match(special))) {
+                    alert('enter atleast 1 special charater in password')
+                    return false;
+                }
+               else if (pass.length<3 ){
+                    alert('enter a passsword with length greater than 3');
+                    document.myform.pass.focus();
+                    return false;
+                }
+                
+                else{
+                    return true;
+                }
+            
+            }
+function Gen(gender){
+    if(gender==''){
+        alert("select a gender");
+                    document.myform.gender[0].clicked();
+                    return false;
+    }
+    else {
+    
+        return true;
+    }
+}
+
+            if(Name(name)&& Email(email) && Pass(pass)&& Phone(phone)&&Gen(gender))
+            alert("you have successfully registered");
+            
+            
+        }
+    </script>
+</head>
+<body><div>
+    <h1 style="font-size: 30px; color:red">Registration form</h1>
+    <table>
+    <form name="myform" action="climatechoice.html"><br>
+        <table border="1px" >
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="name" ></td>
+            </tr>
+            <tr>
+                <td>Password </td>
+                <td><input type="password" name="pass"></td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+
+            <tr>
+                <td>Phone no </td>
+                <td><input type="text" name="phone"></td>
+            </tr>
+
+           
+
+            <tr>
+                <td>Gender </td>
+                <td><input type="radio" name="gender" value="male">male
+                    <input type="radio" name="gender" value="female">female</td>
+            </tr>
+        <tr>
+            <td> <input type="button" name="submit" value="submit" onclick=validation()></td>
+        </tr>
+             
+     
+    </form>
+</table></div>
+</body>
+</html>
